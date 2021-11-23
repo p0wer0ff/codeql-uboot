@@ -1,6 +1,6 @@
 import cpp
 
 from Macro m
-where m.getName() in ["ntohl","ntohs","ntohll"]
+where m.getName().regexpMatch("ntoh(s|l|ll)")
 select m
 
