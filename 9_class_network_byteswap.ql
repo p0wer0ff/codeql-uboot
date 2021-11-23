@@ -1,14 +1,17 @@
 import cpp
 
+/**
+ * An expression involved when swapping the byte order of network data.
+ * Its value is likely to have been read from the network.
+ */
 class NetworkByteSwap extends Expr {
-  NetworkByteSwap () {
-    // TODO: replace <class> and <var>
+  NetworkByteSwap() {
     exists(MacroInvocation mi |
-      mi.getMacro().getName().regexpMatch("ntoh(s|l|ll)") and
-      this=mi.getExpr()
+      mi.getMacroName().regexpMatch("ntoh(s|l|ll)") and
+      this = mi.getExpr()
     )
   }
 }
 
 from NetworkByteSwap n
-select n, "Network byte swap"
+select n
